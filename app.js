@@ -51,14 +51,65 @@ countries.forEach((country) => {
 select.addEventListener("change",(e)=>{
     const countryName=e.target.value;
     if (countryName) {
-        const selectedCountry=countries.filter(country=>country.name.common===countryName);
-        renderCountry(selectedCountry[0])
+        const country=countries.filter(country=>country.name.common===countryName);
+        selectedCountry=country[0].name.common;
+        renderCountry(country[0])
     }
 })
 
 
+const renderCountry=(selectedCountryData)=>{
+  const countriesInfo=document.querySelector(".countries-info");
+  console.log(selectedCountryData);
+  const{name:{common},currencies, capital, languages, maps:{googleMaps},population,flags:{svg},region,borders }=selectedCountryData;
+  countriesInfo.innerHTML=`
+  <p class="display-6 text-center">SELECTED COUNTRIES INFO</p>
+  <div class="card shadow-lg" style="width: 22rem">
+  <img src="${svg}" class="card-img-top shadow" alt="..." />
+  <div >
+    <h5 class="p-2 text-center">${common}</h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <i class="fa-solid fa-earth-oceania"></i><span class="fw-bold"> Region:</span> ${region}
+    </li>
+    <li class="list-group-item">
+      <i class="fas fa-lg fa-landmark"></i>
+      <span class="fw-bold"> Capitals:</span> ${capital}
+    </li>
+    <li class="list-group-item">
+      <i class="fas fa-lg fa-comments"></i>
+      <span class="fw-bold"> Languages:</span> ${Object.values(languages)}
+    </li>
+    <li class="list-group-item">
+      <i class="fas fa-lg fa-money-bill-wave"></i>
+      <span class="fw-bold"> Currencies:</span> ${
+        Object.values(currencies)[0].name
+      },
+      ${Object.values(currencies)[0].symbol}
+    </li>
+    <li class="list-group-item">
+    <i class="fa-solid fa-people-group"></i></i>
+    <span class="fw-bold"> Population:</span> ${population.toLocaleString(
+      "en-US"
+    )}
+  </li>
+    <li class="list-group-item">
+    <i class="fa-sharp fa-solid fa-road-barrier"></i>
+    <span class="fw-bold"> Borders:</span>  ${borders ? borders : "None"}
+  </li>
+  </li>
+  <li class="list-group-item">
+    <i class="fa-solid fa-map-location-dot"></i><span class="fw-bold"> Map:</span> <a href=${
+      googleMaps
+    } target='_blank'> Go to google map</a> </li>
+  </ul>
+</div>
+  `
 
+}
 
+console.log("67. satır seçilmiş ülke", selectedCountry);
 
 
 //? Ülkelerin hava durumu bilgisini al
