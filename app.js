@@ -11,7 +11,7 @@ const getCountriesDataFromRestApi=async()=>{
 try {
     const res = await fetch(`https://restcountries.com/v3.1/all`);
   if (!res.ok) {
-    renderError(`Something went wrong`);
+    renderError(`Something went wrong:${res.status}`);
       throw new Error();
 }
     const data=await res.json();
@@ -20,22 +20,6 @@ try {
 console.log(error);
         }
 };
-
-
-
-// const getCountriesDataFromRestApi = async () => {
-//     try {
-//       const res = await fetch(`https://restcountries.com/v3.1/all`);
-//       if (!res.ok) {
-//         renderError(`Something went wrong:${res.status}`);
-//         throw new Error();
-//       }
-//       const data = await res.json();
-//       getCountryNames(data);
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
 
 
 
@@ -63,7 +47,6 @@ const renderCountry=(selectedCountryData)=>{
   console.log(selectedCountryData);
   const{name:{common},currencies, capital, languages, maps:{googleMaps},population,flags:{svg},region,borders }=selectedCountryData;
   countriesInfo.innerHTML=`
-  <p class="display-6 text-center">SELECTED COUNTRIES INFO</p>
   <div class="card shadow-lg" style="width: 22rem">
   <img src="${svg}" class="card-img-top shadow" alt="..." />
   <div >
