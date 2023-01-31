@@ -1,3 +1,65 @@
+let countries="";
+let selectedCountry="";
+const select= document.querySelector(".form-select");
+window.onload = function () {
+    getCountriesDataFromRestApi();
+  };
+  
+//? Ülkelerin isimlerini select box'a getir 
+const getCountriesDataFromRestApi=async()=>{
+    
+try {
+    const res = await fetch(`https://restcountries.com/v3.1/all`);
+  if (!res.ok) {
+    renderError(`Something went wrong`);
+      throw new Error();
+}
+    const data=await res.json();
+    getCountryNames(data)
+} catch (error) {
+console.log(error);
+        }
+};
+
+
+
+// const getCountriesDataFromRestApi = async () => {
+//     try {
+//       const res = await fetch(`https://restcountries.com/v3.1/all`);
+//       if (!res.ok) {
+//         renderError(`Something went wrong:${res.status}`);
+//         throw new Error();
+//       }
+//       const data = await res.json();
+//       getCountryNames(data);
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+
+
+
+const getCountryNames=(data)=>{
+countries=data;
+console.log( "ülke dataları", countries);
+countries.forEach((country) => {
+  document.querySelector(".form-select").innerHTML += `
+    <option value='${country.name.common}'>${country.name.common}</option> `;
+  });
+}
+
+select.addEventListener("change",(e)=>{
+    const countryName=e.target.value;
+    if (countryName) {
+        const selectedCountry=countries.filter(country=>country.name.common===countryName);
+        renderCountry(selectedCountry[0])
+    }
+})
+
+
+
+
+
 
 //? Ülkelerin hava durumu bilgisini al
 const getWeatherDataByCityName= async(cityName)=>{
@@ -9,8 +71,8 @@ try {
         throw new Error("Something went wrong in openweathermap api");
     }
 const data=await res.json();
-console.log("Ülke hava durumu datası", data);
-rendersCountrysWeather(data);
+// console.log("Ülke hava durumu datası", data);
+// rendersCountrysWeather(data);
 } catch (error) {
 // renderErrors(error)
 }
