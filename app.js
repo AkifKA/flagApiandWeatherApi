@@ -74,7 +74,6 @@ countrySelect.addEventListener("change", (e) => {
     document
       .querySelector(".cities-select-box")
       .addEventListener("change", (e) => {
-        console.log(e.target.value);
         getWeatherDataByCityName(e.target.value);
       });
   };
@@ -175,7 +174,7 @@ const rendersCountrysWeather = (cityData) => {
       body.style.backgroundSize
     );
   };
-  console.log("178", weather[0].description);
+  console.log("178", weather[0].description, country);
 
   switch (weather[0].description) {
     case "kapalı":
@@ -229,7 +228,7 @@ const rendersCountrysWeather = (cityData) => {
         <li class="list-group-item">Rüzgar Hızı: ${speed}</li>
       </ul>
       <div class="card-footer">
-      ${country}
+      Ülke: ${country}
       </div>
     </div>
       `;
@@ -240,7 +239,7 @@ const rendersCountrysWeather = (cityData) => {
       setupBodyStyle();
       weatherInfo.innerHTML = `
    
-      <div class="card" style="width: 30rem;">
+      <div class="card" style="width: 18rem;">
       <ul class="list-group list-group-flush">
         <li class="list-group-item">Şehir: ${name}</li>
         <li class="list-group-item">Sıcaklık: ${Math.round(
@@ -259,7 +258,7 @@ const rendersCountrysWeather = (cityData) => {
         <li class="list-group-item">Rüzgar Hızı: ${speed}</li>
       </ul>
       <div class="card-footer">
-      ${country}
+      Ülke: ${country}
       </div>
     </div>
       `;
@@ -289,7 +288,7 @@ const rendersCountrysWeather = (cityData) => {
         <li class="list-group-item">Rüzgar Hızı: ${speed}</li>
       </ul>
       <div class="card-footer">
-      ${country}
+      Ülke: ${country}
       </div>
     </div>
       `;
@@ -319,7 +318,7 @@ const rendersCountrysWeather = (cityData) => {
         <li class="list-group-item">Rüzgar Hızı: ${speed}</li>
       </ul>
       <div class="card-footer">
-      ${country}
+      Ülke: ${country}
       </div>
     </div>
   
