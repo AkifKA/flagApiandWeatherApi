@@ -62,7 +62,7 @@ countrySelect.addEventListener("change", (e) => {
       console.log(sehirler[0]);
 
       document.querySelector(".cities").innerHTML = `
-      <p> Please select from ${countryName}'s cities</p>
+      <p class="please"> Please select from ${countryName}'s cities</p>
       <select class="cities-select-box form-select w-50"><select>
       `;
 
