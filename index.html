@@ -26,11 +26,11 @@
         id="country-name"
         class="form-select country-select w-25"
         aria-label="Default select example"
-      ></select>
+      >
+        <option value="">Select Country</option>
+      </select>
     </div>
-    <div
-      class="countries d-flex justify-content-around gap-5 text-center text-primary"
-    >
+    <div class="countries d-flex justify-content-around gap-1 text-center">
       <div>
         <h3>SELECTED COUNTRIES INFO</h3>
         <div
@@ -39,19 +39,12 @@
       </div>
       <div>
         <h3>WEATHER INFO</h3>
-        <div class="weather-info text-danger"></div>
-        <div class="bok"></div>
+        <div class="weather-info text-light bg-image"></div>
+        <div
+          class="cities d-flex flex-column justify-content-center align-content-center"
+        ></div>
       </div>
     </div>
-    <div class="news d-flex justify-content-center display-4 text-info">
-      NEWS
-    </div>
-
-    <footer class="page-footer">
-      <div class="container text-center">
-        <small>Coded by MAK COM </small>
-      </div>
-    </footer>
     <script src="app.js"></script>
   </body>
 </html>
