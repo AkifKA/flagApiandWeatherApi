@@ -42,9 +42,6 @@ countrySelect.addEventListener("change", (e) => {
     // selectedCountry = country[0].name.common;
     renderCountry(country[0]);
   }
-  weatherInfo.innerHTML = `
-    <div class="weather-container"></div>
-    `;
 
   fetch(`https://countriesnow.space/api/v0.1/countries`)
     .then((res) => res.json())
@@ -101,36 +98,34 @@ const renderCountry = (selectedCountryData) => {
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item">
-      <i class="fa-solid fa-earth-oceania"></i><span class="fw-bold"> Region:</span> ${region}
+      <i class="fa-solid fa-earth-oceania"></i><span class="fw-bold"> Bölge:</span> ${region}
     </li>
     <li class="list-group-item">
       <i class="fas fa-lg fa-landmark"></i>
-      <span class="fw-bold"> Capitals:</span> ${capital}
+      <span class="fw-bold"> Başkent/ler:</span> ${capital}
     </li>
     <li class="list-group-item">
       <i class="fas fa-lg fa-comments"></i>
-      <span class="fw-bold"> Languages:</span> ${Object.values(languages)}
+      <span class="fw-bold"> Diller:</span> ${Object.values(languages)}
     </li>
     <li class="list-group-item">
       <i class="fas fa-lg fa-money-bill-wave"></i>
-      <span class="fw-bold"> Currencies:</span> ${
+      <span class="fw-bold"> Para Birimleri:</span> ${
         Object.values(currencies)[0].name
       },
       ${Object.values(currencies)[0].symbol}
     </li>
     <li class="list-group-item">
     <i class="fa-solid fa-people-group"></i></i>
-    <span class="fw-bold"> Population:</span> ${population.toLocaleString(
-      "en-US"
-    )}
+    <span class="fw-bold"> Nüfus:</span> ${population.toLocaleString("en-US")}
   </li>
     <li class="list-group-item">
     <i class="fa-sharp fa-solid fa-road-barrier"></i>
-    <span class="fw-bold"> Borders:</span>  ${borders ? borders : "None"}
+    <span class="fw-bold"> Sınırlar:</span>  ${borders ? borders : "None"}
   </li>
   </li>
   <li class="list-group-item">
-    <i class="fa-solid fa-map-location-dot"></i><span class="fw-bold"> Map:</span> <a href=${googleMaps} target='_blank'> Go to google map</a> </li>
+    <i class="fa-solid fa-map-location-dot"></i><span class="fw-bold"> Konum:</span> <a href=${googleMaps} target='_blank'> Go to google map</a> </li>
   </ul>
 </div>
   `;
@@ -181,9 +176,9 @@ const rendersCountrysWeather = (cityData) => {
       body.style.background = `url("weather-animations/fog.gif")`;
       setupBodyStyle();
       weatherInfo.innerHTML = `
-      <div class="card" style="width: 18rem;">
+      <div class="card" style="width: 22rem;">
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">Şehir: ${name}</li>
+        <li class="list-group-item"><span fw-bold>Şehir:</span>  ${name}</li>
         <li class="list-group-item">Sıcaklık: ${temp}<sup>&#8451</li>
         <li class="list-group-item">Hissedilen ${Math.Round(
           feels_like
@@ -209,7 +204,7 @@ const rendersCountrysWeather = (cityData) => {
       setupBodyStyle();
       weatherInfo.innerHTML = `
    
-      <div class="card" style="width: 18rem;">
+      <div class="card" style="width: 22rem;">
       <ul class="list-group list-group-flush">
         <li class="list-group-item">Şehir: ${name}</li>
         <li class="list-group-item">Sıcaklık: ${Math.round(
@@ -239,7 +234,7 @@ const rendersCountrysWeather = (cityData) => {
       setupBodyStyle();
       weatherInfo.innerHTML = `
    
-      <div class="card" style="width: 18rem;">
+      <div class="card" style="width: 22rem;">
       <ul class="list-group list-group-flush">
         <li class="list-group-item">Şehir: ${name}</li>
         <li class="list-group-item">Sıcaklık: ${Math.round(
@@ -269,7 +264,7 @@ const rendersCountrysWeather = (cityData) => {
       setupBodyStyle();
       weatherInfo.innerHTML = `
    
-      <div class="card" style="width: 18rem;">
+      <div class="card" style="width: 22rem;">
       <ul class="list-group list-group-flush">
         <li class="list-group-item">Şehir: ${name}</li>
         <li class="list-group-item">Sıcaklık:${Math.round(
@@ -299,7 +294,7 @@ const rendersCountrysWeather = (cityData) => {
       setupBodyStyle();
       weatherInfo.innerHTML = `
   
-      <div class="card" style="width: 18rem;">
+      <div class="card" style="width: 22rem;">
       <ul class="list-group list-group-flush">
         <li class="list-group-item">Şehir: ${name}</li>
         <li class="list-group-item">Sıcaklık: ${Math.Round(
@@ -330,7 +325,7 @@ const rendersCountrysWeather = (cityData) => {
       setupBodyStyle();
       weatherInfo.innerHTML = `
   
-      <div class="card" style="width: 18rem;">
+      <div class="card" style="width: 22rem;">
       <ul class="list-group list-group-flush">
         <li class="list-group-item">Şehir: ${name}</li>
         <li class="list-group-item">Sıcaklık: ${Mat.Round(
